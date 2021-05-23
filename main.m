@@ -21,6 +21,3 @@ viscircles(centers,radii);
 hold off
 
 num_circles = size(stats,1);
-
-fprintf("Number of circles= ")
-disp(num_circles)
