@@ -1,23 +1,38 @@
-img = imread('images/pills1.png');
+img = imread('images/coins2.jpg');
 
-imb = imbinarize(img);
-
-se = strel('disk', 12,0);
-
-imbe = imerode(imb,se);
+img = imresize(img,0.1);
+img = rgb2gray(img);
 
 
-stats = regionprops('table',imbe,'Centroid',...
-    'MajorAxisLength','MinorAxisLength');
+% lpf = fspecial('gaussian', [12,12],4);
+% 
+% 
+% 
+% blur = imfilter(img,lpf);
+% 
+% 
+% 
+% bw = imbinarize(blur);
+% 
+% bwe = edge(bw,'Canny');
 
-centers = stats.Centroid;
-diameters = mean([stats.MajorAxisLength stats.MinorAxisLength],2);
-radii = diameters/2;
+[centers, radii, metric] = imfindcircles(img,[10 30]);
+
+radius = round(radii,2);
+
+radius = sort(radius);
+ 
+
+coins = ["5c";"2d";"10c";"1d";"20c";"50c"];
+
+coins = [coins radius];
 
 figure(1)
-imshow(imbe)
-hold on
-viscircles(centers,radii);
-hold off
+imshow(img)
+for i = 1:6
+    viscircles(centers(i,:), radii(i),'EdgeColor','b');
+end
 
-num_circles = size(stats,1);
+save("coins.mat",'coins')
+
+
