@@ -33,6 +33,6 @@ for i = 1:6
     viscircles(centers(i,:), radii(i),'EdgeColor','b');
 end
 
-save("coins.mat",'coins')
+
 
 
