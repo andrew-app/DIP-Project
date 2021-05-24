@@ -6,6 +6,7 @@
 imgtest = imread('coins2.jpg');
 %imgA = double(imgtest)./255;
 img1 = rgb2gray(imgtest);
+% Binarize the image
 imgBin = imbinarize(img1);
 figure(1)
 imshow(imgBin);
