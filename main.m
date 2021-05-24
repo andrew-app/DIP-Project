@@ -21,17 +21,5 @@ imshow(BinImgB);
 [labelImg, numOfObj] = bwlabel(BinImgB);
 measurement = regionprops(labelImg);
 
-<<<<<<< Updated upstream
-=======
-centers = stats.Centroid;
-diameters = mean([stats.MajorAxisLength stats.MinorAxisLength],2);
-radii = diameters/2;
-
-figure(1)
-hold on
-viscircles(centers,radii);
-hold off
-
-figure(2)
-imshow(img)
->>>>>>> Stashed changes
+figure(22)
+imshow(BinImgA);
