@@ -42,6 +42,9 @@ end
 imgtest = imread('images/coins2.jpg');
 %imgA = double(imgtest)./255;
 img1 = rgb2gray(imgtest);
+lpf = fspecial('gaussian', [15,15],5);
+
+img1 = imfilter(img1,lpf);
 % Binarize the image
 imgBin = imbinarize(img1);
 figure(1)
