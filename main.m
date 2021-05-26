@@ -11,6 +11,9 @@ imgBin = imbinarize(img1);
 figure(1)
 imshow(imgBin);
 
+figure(10)
+imagesc(img1); colormap(gray(256)); colorbar;
+
 % Fill the holes and regions of the image
 BinImgF = imfill(imgBin,'holes');
 
@@ -19,11 +22,9 @@ se = strel('disk',3);
 BinImgA = imopen(BinImgF,se);
 BinImgB = imclose(BinImgA,se);
 
-figure(66)
-imshow(BinImgB)
 
 % Detecting total number of objects in image
-figure(3)
+figure(2)
 imshow(BinImgB);
 [labelImg, numOfObj] = bwlabel(double(BinImgB));
 
@@ -37,6 +38,7 @@ soc = 0;
 % Method 1 Test 
 % ===============
 
+figure(3)
 imshow(imgtest);
 hold on;
 
