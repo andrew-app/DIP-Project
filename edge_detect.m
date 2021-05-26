@@ -10,9 +10,8 @@ lpf = fspecial('gaussian', [12,12],4);
 blur = imfilter(img,lpf);
 
 
-bw = imbinarize(blur);
 
-bwe = edge(bw,'Canny');
+bwe = edge(blur,'Canny');
 
 radius = 14;
 
