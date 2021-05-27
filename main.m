@@ -3,7 +3,7 @@
 % =================================
 load('coins.mat');
 % Load test image (coin) 
-imgtest = imread('coins2.jpg');
+imgtest = imread('coins22.jpg');
 %imgA = double(imgtest)./255;
 img1 = rgb2gray(imgtest);
 % Binarize the image
@@ -12,7 +12,7 @@ figure(1)
 imshow(imgBin);
 
 figure(10)
-imagesc(img1); colormap(gray(256));
+imagesc(img1); colormap(gray(256)); title('Original test image')
 
 % Fill the holes and regions of the image
 BinImgF = imfill(imgBin,'holes');
@@ -77,64 +77,70 @@ title(['Total sum of coins = ',num2str(soc), ' cents'])
 % Method 2
 % ========================
 
-% smoothen the image 
-%  lpf = fspecial('gaussian',[12 12],5);
-%  imgAA = imfilter(imgBin,lpf);
-% imgAB = imopen(imgAA,se);
-% imgAC = imclose(imgAB,se);
-% imgAD = imbinarize(imgAC);
-% figure(4)
-% imshow(imgAB);
-% 
-% imgr = imresize(img1, 0.1);
-% imgs = imresize(imgAD, 0.1);
-% % counter/totalizer coins
-% cc = countcoins(imgr,imgs);
-% figure(5)
-% imshow(cc);
+%smoothen the image 
+lpf = fspecial('gaussian',[25 25],30);
+imgAA = imfilter(img1,lpf);
+imgAB = imopen(imgAA,se);
+imgAC = imclose(imgAB,se);
+imgAD = imbinarize(imgAC);
+figure(4)
+imshow(imgAB); title('Gaussian blur filtered image')
+
+imgr = imresize(img1, 0.5);
+imgs = imresize(imgAD, 0.5);
+% counter/totalizer coins
+cc = countcoins(img1,imgAD);
+figure(5)
+imshow(cc);
 
 % ========================
 % Method 3 
 % ========================
-fiftycent = 0;
-fivecent = 0;
-twentycent = 0;
-tencent = 0;
-adollar = 0;
-twodollar = 0;
-lvl = 0.55;
-edges = edge(imgBin,'canny');
-figure(11)
-imshow(edges);
-[centralA, radius1, met1] = imfindcircles(edges, [7 21]);
-[centralB, radius2, met2] = imfindcircles(edges, [22 66]);
-radiiA = [radius1; radius2];
-
-maxradius = max(radiiA);
-rradius = radiiA/max(radiiA);
-a = 1;
-while a < length(rradius)+1
-    if rradius(a) <= 13.66
-        fivecent = fivecent+1;
-    elseif rradius(a) <= 14.82
-        twodollar = twodollar+1;
-    elseif rradius(a) <= 17.15
-        tencent = tencent + 1;
-    elseif rradius(a) <= 17.91
-            adollar = adollar + 1;
-    elseif rradius(a) <= 20.57
-        twentycent = twentycent + 1;
-    elseif rradius(a) <= 23.42
-        fiftycent = fiftycent + 1;
-    end
-    a = a + 1;
-end
-
-sum_of_coins = fiftycent + fivecent + twentycent + tencent + adollar + twodollar;
-total_money = (fivecent*5 + twentycent*20 + tencent*10 + adollar*100 + twodollar*200 +fiftycent*50)/100;
+% fiftycent = 0;
+% fivecent = 0;
+% twentycent = 0;
+% tencent = 0;
+% adollar = 0;
+% twodollar = 0;
+% lvl = 0.55;
+% edges = edge(img1,'canny');
+% figure(11)
+% imshow(edges); title('Coin edges')
+% [centralA, radius1, met1] = imfindcircles(edges, [7 21]);
+% [centralB, radius2, met2] = imfindcircles(edges, [22 66]);
+% radiiA = [radius1; radius2];
+% 
+% maxradius = max(radiiA);
+% rradius = radiiA/max(radiiA);
+% a = 1;
+% while a < length(rradius)+1
+%     if rradius(a) <= 13.66
+%         fivecent = fivecent+1;
+%     elseif rradius(a) <= 14.82
+%         twodollar = twodollar+1;
+%     elseif rradius(a) <= 17.15
+%         tencent = tencent + 1;
+%     elseif rradius(a) <= 17.91
+%             adollar = adollar + 1;
+%     elseif rradius(a) <= 20.57
+%         twentycent = twentycent + 1;
+%     elseif rradius(a) <= 23.42
+%         fiftycent = fiftycent + 1;
+%     end
+%     a = a + 1;
+% end
+% 
+% sum_of_coins = fiftycent + fivecent + twentycent + tencent + adollar + twodollar;
+% total_money = (fivecent*5 + twentycent*20 + tencent*10 + adollar*100 + twodollar*200 +fiftycent*50)/100;
 
 figure(10)
 subplot(2,1,1)
 imagesc(img1); colormap(gray(256)); axis on; title('Grayscale coin image (dark surface)')
 subplot(2,1,2)
 imagesc(edges); colormap(gray(256)); axis on; title('Grayscale coin edges')
+
+figure(12)
+subplot(2,1,1)
+imshow(imgBin); title('coins without imfill function');
+subplot(2,1,2)
+imshow(BinImgB); title('coins after imfill function');

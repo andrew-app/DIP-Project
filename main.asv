@@ -12,7 +12,7 @@ figure(1)
 imshow(imgBin);
 
 figure(10)
-imagesc(img1); colormap(gray(256)); colorbar;
+imagesc(img1); colormap(gray(256));
 
 % Fill the holes and regions of the image
 BinImgF = imfill(imgBin,'holes');
@@ -105,8 +105,8 @@ twodollar = 0;
 lvl = 0.55;
 edges = edge(imgBin,'canny');
 figure(11)
-imshow(edges);
-[centralA, radius1, met1] = imfindcircles(edges, [8 24]);
+imshow(edges); title('Coin edges')
+[centralA, radius1, met1] = imfindcircles(edges, [7 21]);
 [centralB, radius2, met2] = imfindcircles(edges, [22 66]);
 radiiA = [radius1; radius2];
 
@@ -114,17 +114,17 @@ maxradius = max(radiiA);
 rradius = radiiA/max(radiiA);
 a = 1;
 while a < length(rradius)+1
-    if rradius(a) <= coins(1,2)
+    if rradius(a) <= 13.66
         fivecent = fivecent+1;
-    elseif rradius(a) <= coins(2,2)
+    elseif rradius(a) <= 14.82
         twodollar = twodollar+1;
-    elseif rradius(a) <= coins(3)
+    elseif rradius(a) <= 17.15
         tencent = tencent + 1;
-    elseif rradius(a) <= coins(4)
+    elseif rradius(a) <= 17.91
             adollar = adollar + 1;
-    elseif rradius(a) <= coins(5)
+    elseif rradius(a) <= 20.57
         twentycent = twentycent + 1;
-    elseif rradius(a) <= coins(6)
+    elseif rradius(a) <= 23.42
         fiftycent = fiftycent + 1;
     end
     a = a + 1;
@@ -133,3 +133,8 @@ end
 sum_of_coins = fiftycent + fivecent + twentycent + tencent + adollar + twodollar;
 total_money = (fivecent*5 + twentycent*20 + tencent*10 + adollar*100 + twodollar*200 +fiftycent*50)/100;
 
+figure(10)
+subplot(2,1,1)
+imagesc(img1); colormap(gray(256)); axis on; title('Grayscale coin image (dark surface)')
+subplot(2,1,2)
+imagesc(edges); colormap(gray(256)); axis on; title('Grayscale coin edges')
