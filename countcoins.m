@@ -3,10 +3,10 @@
 % Then count the coins in image.
 % =============================================================
 
-function [counter, a, b, c, d, e, f, a1, b2, c3, d4, e5 ,f6] = countcoins(original, smoothed)
+function [counter, a, b, c, d, e, f, a1, b2, c3, d4, e5 ,f6] = countcoins(original, smoothd)
 
 % edge detection through gradient process
-X = edge(smoothed,'canny');
+X = edge(smoothd,'canny');
 figure(1); colormap(gray(256)); imagesc(X);
 title('coin''s edges')
 
