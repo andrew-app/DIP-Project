@@ -3,7 +3,7 @@
 % =================================
 load('coins.mat');
 % Load test image (coin) 
-imgtest = imread('coins22.jpg');
+imgtest = imread('coins2.jpg');
 %imgA = double(imgtest)./255;
 img1 = rgb2gray(imgtest);
 % Binarize the image
@@ -12,7 +12,7 @@ figure(1)
 imshow(imgBin);
 
 figure(10)
-imagesc(img1); colormap(gray(256)); colorbar;
+imagesc(img1); colormap(gray(256));
 
 % Fill the holes and regions of the image
 BinImgF = imfill(imgBin,'holes');
@@ -133,3 +133,8 @@ end
 sum_of_coins = fiftycent + fivecent + twentycent + tencent + adollar + twodollar;
 total_money = (fivecent*5 + twentycent*20 + tencent*10 + adollar*100 + twodollar*200 +fiftycent*50)/100;
 
+figure(10)
+subplot(2,1,1)
+imagesc(img1); colormap(gray(256)); axis on; title('Grayscale coin image (dark surface)')
+subplot(2,1,2)
+imagesc(edges); colormap(gray(256)); axis on; title('Grayscale coin edges')
