@@ -78,7 +78,7 @@ title(['Total sum of coins = ',num2str(soc), ' cents'])
 % ========================
 
 % smoothen the image 
-lpf = fspecial('gaussian',[25 25],10);
+lpf = fspecial('gaussian',[25 25],30);
 imgAA = imfilter(img1,lpf);
 imgAB = imopen(imgAA,se);
 imgAC = imclose(imgAB,se);
@@ -86,7 +86,9 @@ imgAD = imbinarize(imgAC);
 figure(4)
 imshow(imgAB);
 
+imgr = imresize(img1, 0.4);
+imgs = imresize(imgAD, 0.4);
 % counter/totalizer coins
-cc = countcoins(img1,imgAD);
+cc = countcoins(imgr,imgs);
 figure(5)
 imshow(cc);
