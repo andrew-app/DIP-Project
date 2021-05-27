@@ -3,7 +3,7 @@
 % =================================
 
 % Load test image (coin) 
-imgtest = imread('coins22.jpg');
+imgtest = imread('coins2.jpg');
 %imgA = double(imgtest)./255;
 img1 = rgb2gray(imgtest);
 % Binarize the image
@@ -86,8 +86,8 @@ imgAD = imbinarize(imgAC);
 figure(4)
 imshow(imgAB);
 
-imgr = imresize(img1, 0.4);
-imgs = imresize(imgAD, 0.4);
+imgr = imresize(img1, 0.1);
+imgs = imresize(imgAD, 0.1);
 % counter/totalizer coins
 cc = countcoins(imgr,imgs);
 figure(5)

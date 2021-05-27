@@ -13,15 +13,15 @@ title('coin''s edges')
 % matrices of square
 cs = 0; % accumulation sum
 size = length(X);
-threshold = 8; % once threshold reaches 8 then approve as a coin
+threshold = 10; % once threshold reaches 8 then approve as a coin
 
 % Initialize raddi for the variety of coins
-radii_a = 14%13.66; % radius of 5 cents
-radii_b = 15%14.82; % radius of 2 dollars
-radii_c = 17%17.15; % radius of 10 cents
-radii_d = 18%17.91; % radius of a dollar
-radii_e = 21%20.57; % radius of 20 cents
-radii_f = 24%23.42; % radius of 50 cents
+radii_a = 14;%13.66; % radius of 5 cents
+radii_b = 15;%14.82; % radius of 2 dollars
+radii_c = 17;%17.15; % radius of 10 cents
+radii_d = 18;%17.91; % radius of a dollar
+radii_e = 21;%20.57; % radius of 20 cents
+radii_f = 25;%23.42; % radius of 50 cents
 
 a = 0;
 b = 0;
