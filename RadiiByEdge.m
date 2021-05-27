@@ -1,4 +1,4 @@
-function [r,firstedge, secedge] = radii(imgcoin)
+function [r,firstedge, secedge] = RadiiByEdge(imgcoin)
 
 % img coin is the square image ( the detected edges ) of the original coin
 

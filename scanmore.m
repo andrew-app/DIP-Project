@@ -14,19 +14,19 @@ x1 = round(radii/2);
 y1 = round(radii*sqrt(3)/2);
 
 % Check direction of NORTHEAST
-if ((m>y1+r1) && (n<=size-x1-r1) && (max(X(m-y1-r1:m-y1+r1,n+x1+r1:-1:n+x1-r1)==1)==1))
+if ((m>y1+r1) && (n<=size-x1-r1) & (max(X(m-y1-r1:m-y1+r1,n+x1+r1:-1:n+x1-r1)==1)==1))
     value = value + 1;
 end
 % Check direction of SOUTHEAST
-if ((m<=size-y1-r1) && (n<=size-x1-r1) && (max(X(m+y1-r1:m+y1+r1,n+x1-r1:n+x1+r1)==1)==1))
+if ((m<=size-y1-r1) & (n<=size-x1-r1) & (max(X(m+y1-r1:m+y1+r1,n+x1-r1:n+x1+r1)==1)==1))
     value = value + 1;
 end
 % Check direction of NORTHWEST
-if ((m>y1+r1) && (n>x1+r1) && (max(X(m-y1-r1:m-y1+r1,n-x1-r1:n-x1+r1)==1)==1))
+if ((m>y1+r1) & (n>x1+r1) & (max(X(m-y1-r1:m-y1+r1,n-x1-r1:n-x1+r1)==1)==1))
     value = value + 1;
 end
 % Check direction of SOUTHWEST
-if ((m<=size-y1-r1) && (n>x1+r1) && (max(X(m+y1-r1:m+y1+r1,n-x1+r1:-1:n-x1-r1)==1)==1))
+if ((m<=size-y1-r1) & (n>x1+r1) & (max(X(m+y1-r1:m+y1+r1,n-x1+r1:-1:n-x1-r1)==1)==1))
     value = value + 1;
 end
 
@@ -35,19 +35,19 @@ x1 = round(radii/2);
 y1 = round(radii*sqrt(3)/2);
 
 % Check direction of NORTHEAST
-if ((m>y1+r1) && (n<=size-x1-r1) && (max(X(m-y1-r1:m-y1+r1,n+x1+r1:-1:n+x1-r1)==1)==1))
+if ((m>y1+r1) & (n<=size-x1-r1) & (max(X(m-y1-r1:m-y1+r1,n+x1+r1:-1:n+x1-r1)==1)==1))
     value = value + 1;
 end
 % Check direction of SOUTHEAST
-if ((m<=size-y1-r1) && (n<=size-x1-r1) && (max(X(m+y1-r1:m+y1+r1,n+x1-r1:n+x1+r1)==1)==1))
+if ((m<=size-y1-r1) & (n<=size-x1-r1) & (max(X(m+y1-r1:m+y1+r1,n+x1-r1:n+x1+r1)==1)==1))
     value = value + 1;
 end
 % Check direction of NORTHWEST
-if ((m>y1+r1) && (n>x1+r1) && (max(X(m-y1-r1:m-y1+r1,n-x1-r1:n-x1+r1)==1)==1))
+if ((m>y1+r1) & (n>x1+r1) & (max(X(m-y1-r1:m-y1+r1,n-x1-r1:n-x1+r1)==1)==1))
     value = value + 1;
 end
 % Check direction of SOUTHWEST
-if ((m<=size-y1-r1) && (n>x1+r1) && (max(X(m+y1-r1:m+y1+r1,n-x1+r1:-1:n-x1-r1)==1)==1))
+if ((m<=size-y1-r1) & (n>x1+r1) & (max(X(m+y1-r1:m+y1+r1,n-x1+r1:-1:n-x1-r1)==1)==1))
     value = value + 1;
 end
 

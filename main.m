@@ -3,7 +3,7 @@
 % =================================
 
 % Load test image (coin) 
-imgtest = imread('coins2.jpg');
+imgtest = imread('coins22.jpg');
 %imgA = double(imgtest)./255;
 img1 = rgb2gray(imgtest);
 % Binarize the image
@@ -76,8 +76,17 @@ title(['Total sum of coins = ',num2str(soc), ' cents'])
 % ========================
 % Method 2
 % ========================
-    
-lpf = fspecial('gaussian',[15 15],30);
-img1 = imfilter(img1,lpf);
+
+% smoothen the image 
+lpf = fspecial('gaussian',[25 25],10);
+imgAA = imfilter(img1,lpf);
+imgAB = imopen(imgAA,se);
+imgAC = imclose(imgAB,se);
+imgAD = imbinarize(imgAC);
 figure(4)
-imshow(img1);
+imshow(imgAB);
+
+% counter/totalizer coins
+cc = countcoins(img1,imgAD);
+figure(5)
+imshow(cc);
