@@ -1,6 +1,6 @@
 load('coins.mat')
 % Load test image (coin) 
-img = imread('images/coins_t2.jpg');
+img = imread('images/coins_t4.jpg');
 
 img = imresize(img,0.2);
 
@@ -28,21 +28,20 @@ measurement = regionprops(labelImg, 'Area', 'Centroid');
 % Sum of coins
 soc = 0;
 
-% ===============
-% Method 1 Test 
-% ===============
+
 figure(1)
 imshow(img);
 hold on;
 
-% Count total sum of coind based on area 
+% Count total sum of coin based on area 
 for s = 1:size(measurement,1)
     % toc is type of cents
     toc = measurement(s).Centroid;
     A = round(toc(1));
     B = round(toc(2));
-    disp(img_gr(B,A))
-    % Determine coin by area
+    
+    % Determine coin by area and pixel intensity of center of coin for
+    % silver or gold
     if measurement(s).Area <= coins(1) && img_gr(B,A) >= 150 
         text(A-90,B, '$0.05','FontSize',20)
         soc = soc + 0.05;
@@ -67,7 +66,8 @@ hold on;
 % title shows the total sum of the coins
 title(['Total sum of coins = ',num2str(soc), ' cents'])
     
-
+disp('Total Sum:')
+disp(soc)
 
 
 

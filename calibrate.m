@@ -26,7 +26,6 @@ for i = 1:6
     imgBin = imbinarize(img);
 
 
-    
     [labelImg, numOfObj] = bwlabel(imgBin);
 
     % Get the properties of measurement of image region 
