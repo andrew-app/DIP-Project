@@ -1,4 +1,6 @@
-% To find and mark as centre
+%=============================================
+% To find and mark as centre by (Wen Xuan Lee)
+%=============================================
 function [mark] = mark_central(X,m,n,radii)
 
 % The input arguments:

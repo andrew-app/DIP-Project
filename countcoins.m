@@ -1,6 +1,6 @@
 % =============================================================
 % Countcoins implements edge detection on medianfiltered image
-% Then count the coins in image.
+% Then count the coins in image. by (Wen Xuan Lee)
 % =============================================================
 
 function [counter, a, b, c, d, e, f, a1, b2, c3, d4, e5 ,f6] = countcoins(original, smoothd)

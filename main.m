@@ -1,6 +1,6 @@
-% ================================= 
-% By default of coin detection
-% =================================
+% ==============================================
+% By default of coin detection by (Wen Xuan Lee)
+% ==============================================
 load('coins.mat');
 % Load test image (coin) 
 imgtest = imread('coins22.jpg');
@@ -34,9 +34,9 @@ measurement = regionprops(labelImg, 'Area', 'Centroid');
 % Sum of coins
 soc = 0;
 
-% ===============
-% Method 1 Test 
-% ===============
+% ================================
+% Method 1 Test by (Wen Xuan Lee) 
+% ================================
 
 figure(3)
 imshow(imgtest);
@@ -73,9 +73,9 @@ hold on;
 % title shows the total sum of the coins
 title(['Total sum of coins = ',num2str(soc), ' cents'])
     
-% ========================
-% Method 2
-% ========================
+% =========================
+% Method 2 by (Wen Xuan Lee)
+% =========================
 
 %smoothen the image 
 lpf = fspecial('gaussian',[25 25],30);
@@ -93,9 +93,9 @@ cc = countcoins(img1,imgAD);
 figure(5)
 imshow(cc);
 
-% ========================
-% Method 3 
-% ========================
+% =============================================================
+% Method 3 attempt on coin detection by radii by (Wen Xuan Lee)
+% =============================================================
 % fiftycent = 0;
 % fivecent = 0;
 % twentycent = 0;

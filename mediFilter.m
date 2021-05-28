@@ -1,3 +1,6 @@
+% ===========================================================
+% Attempt to perform median filter function by (Wen Xuan Lee)
+% ===========================================================
 function [smooths] = mediFilter(img,fsize)
 size = length(img);
 begin = round(fsize/2);

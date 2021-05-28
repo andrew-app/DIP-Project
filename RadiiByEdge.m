@@ -1,3 +1,6 @@
+% =================
+% by (Wen Xuan Lee)
+% =================
 function [r,firstedge, secedge] = RadiiByEdge(imgcoin)
 
 % img coin is the square image ( the detected edges ) of the original coin

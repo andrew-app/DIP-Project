@@ -1,3 +1,6 @@
+% ==================
+% by (Wen Xuan Lee)
+% ==================
 function [mark] = scanmore(X,m,n,radii)
 
 % The input arguments:
